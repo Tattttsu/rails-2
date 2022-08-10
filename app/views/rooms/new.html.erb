@@ -1,0 +1,52 @@
+
+<div class = user-container>
+
+  <div class = user-nav>
+    基本情報
+  </div>
+  <div class = user-view>
+    <div class = user-view-box>
+      <div class = title>
+        ルーム情報登録
+      </div>
+      <%= form_with model: @room do |f| %>
+      <div class = user-view-content>
+        <div class = label>
+          <%= f.label :name, "ルーム名" %>
+        </div>
+        <%= f.text_field :name %>
+      </div>
+      <div class = user-view-content>
+        <div class = label>
+          <%= f.label :intro, "ルーム紹介" %>
+        </div>
+        <%= f.text_area :intro %>
+      </div>
+      <div class = user-view-content>
+        <div class = label>
+          <%= f.label :price, "料金" %>
+        </div>
+        <%= f.number_field :price %>
+      </div>
+      <div class = user-view-content>
+        <div class = label>
+          <%= f.label :address, "住所" %>
+        </div>  
+        <%= f.text_field :address %>
+      </div>
+      <div class = user-view-content>
+        <div class = label>
+          <%= f.label :image %>
+        </div>
+        <%= f.file_field :image %> 
+      </div>
+      <div class = user-view-content>
+        <div class="actions">
+          <%= f.submit "登録" %>
+        </div>
+      </div>
+    </div>
+      <%end%>
+    </div>
+  </div>
+</div>

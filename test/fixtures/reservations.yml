@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_price: 1
+  start_day: 2022-07-27
+  finish_day: 2022-07-27
+  user_id: 1
+  room_id: 1
+
+two:
+  total_price: 1
+  start_day: 2022-07-27
+  finish_day: 2022-07-27
+  user_id: 1
+  room_id: 1

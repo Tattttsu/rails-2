@@ -1,0 +1,52 @@
+
+<div class = user-container>
+  <div class = user-nav>
+    <ul>
+      <li class = "user-setting"><%= link_to "アカウント", "/users/account", class: "user-setting" %></li>
+      <li class = "user-setting "><%= link_to "プロフィール", "/users/profile", class: "user-setting blue" %></li>
+    </ul>
+  </div>
+  <div class = user-view>
+    <div class = user-view-box>
+      <div class = title>
+        プロフィール
+      </div>
+      <%= form_with model: @user do |f| %>
+        <% if @user.image?%>
+          <div class = user-view-content>
+            <%= image_tag @user.image.url%>
+          </div>
+        <% end %>
+        <div class = user-view-content>
+          <div class = label>
+            <%= f.label :image, "画像" %>
+          </div>
+          <div class = form>
+            <%= f.file_field :image %>
+          </div>
+        </div>
+        <div class = user-view-content>
+          <div class = label>
+            <%= f.label :name, "名前" %>
+          </div>
+          <div class = form>
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class = user-view-content>
+          <div class = label>
+            <%= f.label :intro, "自己紹介" %>
+          </div>
+          <div class = form>
+            <%= f.text_area :intro %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "更新" %></div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,22 @@
+<div class = container>
+  <h4>検索結果:<%= @rooms.count%>件</h4>
+  <div class = search>  
+    <% @rooms.each do |room| %>
+    <%= link_to room_path(room.id) do%>
+      <div class = search-content>
+        <div class = search-image-container>
+          <% if room.image?%> 
+          <%= image_tag room.image.url, class: "search-image" %>
+          <%else%> 画像
+          <%end%>
+        </div>
+    <% end %>
+        <div class = search-item>
+          <p><%= room.name %></p>
+          <p><%= room.address %></p>
+          <p>¥<%= room.price %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
