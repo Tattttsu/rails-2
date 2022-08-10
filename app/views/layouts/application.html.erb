@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsTest2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Poteshare</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">    
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>  
   </head>
-
-  <body>
+  <body> 
+    <%= render "layouts/header" %>
+      <% flash.each do |message_type, message| %>
+      <%= message %>
+       <% end %>
     <%= yield %>
+    <footer>
+    </footer>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $(".header-icon").click(function(){
+      $(".nav-bar").toggle("")
+    });
+  });
+</script>
   </body>
 </html>

@@ -1,0 +1,34 @@
+<header>
+  <div class = nav>
+    <div class = right-nav>
+      <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png", class: "title") , "/" %>
+      <%= form_with url: "/search" , class: "search form" ,method: :get do |f|%>
+        <%= f.text_field :area, placeholder: "エリア" %> 
+        <%= f.text_field :word, placeholder: "キーワード" %> 
+        <%= f.submit "探す", class: "none"  %> 
+      <% end %> 
+    </div>
+    <div class = header-right-nav>
+      <div class = header-account>
+        <% if current_user  %>
+        <%= current_user.name%>
+      </div>
+          <% if current_user.image?%>
+            <%= image_tag(current_user.image.url, class: "header-icon")%>
+          <% else %>
+            <%= image_tag("default_icon", class: "header-icon")%>
+          <% end %>
+        <% else %>
+          <%= link_to "ログイン", "/users/sign_in" %>
+          <%= link_to "登録", "/users/sign_up" %>
+        <% end%>
+        <div class = "nav-bar"> 
+          <p><%= link_to "ルーム登録", "/rooms/new" %></p>
+          <p><%= link_to "予約済みルーム", "/reservations" %></p>
+          <p><%= link_to "登録済みルーム", "/rooms" %></p>
+          <p><%= link_to "設定", "/users/account" %></p>
+          <p><%= button_to "ログアウト", "/users/sign_out", method: :delete %></p>      
+        </div>  
+    </div>
+  </div>
+</header>

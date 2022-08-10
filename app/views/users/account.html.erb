@@ -1,0 +1,25 @@
+
+<div class = user-container>
+  <div class = user-nav>
+    <ul>
+      <li class="user-setting"><%= link_to "アカウント", "/users/account", class: "user-setting blue" %></li>
+      <li class = "user-setting"><%= link_to "プロフィール", "/users/profile" , class: "user-setting"%></li>
+    </ul>
+  </div>
+  <div class = user-view>
+    <div class = user-view-box>
+      <div class = title>
+        <h4>アカウント</h4>
+      </div>  
+      <div class = user-view-content>  
+        <div class = label>メールアドレス</div>
+        <div class = content><%= @user.email %></div> 
+      </div>
+      <div class = user-view-content>  
+        パスワード<%= @user.reset_password_token %></p>
+      </div>
+      <%= link_to "編集", "#" %></p>
+    </div>
+    </div>  
+  </div>
+</div>

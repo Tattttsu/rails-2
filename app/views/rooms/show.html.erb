@@ -1,0 +1,45 @@
+
+<div class = container>
+  <div class = room-main>
+    <div class = room-main-top>
+      <div class = room-image>
+        <%= image_tag @room.image.url, class:"room-icon"%>
+      </div>
+      <div class = reserve-form>
+        <%= form_with url: "/reservations", model: Reservation.new, method: "post"  do |f| %>
+        <div>
+          <%= f.label :start_day, "開始日" %>
+          <%= f.date_field :start_day %>
+        </div>
+        <div>
+          <%= f.label :finish_day, "終了日" %>
+          <%= f.date_field :finish_day %>
+        </div>
+        <div>
+          <%= f.label :people, "人数" %>
+          <%= f.text_field :people %>
+        </div>
+        <%= f.hidden_field :room_id, value: @room.id %>
+          <div class="actions">
+            <%= f.submit "予約する" %>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    <div class = room-main-bottom>
+      <div class = room-user>
+        <div class = user-image>
+          <% if @room.user.image?%>
+          <%=image_tag @room.user.image.url, class: "icon" %>
+          <% end %>
+        </div>
+        <div>
+          <p><%= @room.name %></p>
+          <p><%= @room.address %></p>
+        </div>
+        </div>
+      <div class = user-intro>
+        <p><%= @room.intro %></p>
+      </div>
+
+
