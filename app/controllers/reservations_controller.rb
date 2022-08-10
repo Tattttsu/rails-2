@@ -7,10 +7,8 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    if params[:start_day] == "" || params[:finish_day]== "" || params[:people] == ""
-      @reservation.total_price = ( @reservation.finish_day.to_i-@reservation.start_day.to_i) * @reservation.people.to_i * @reservation.room.price.to_i
-    else
-      @reservation.total_price = 0
+    if @reservation.start_day.present? && @reservation.finish_day.present? && @reservation.people.present?
+      @reservation.total_price = ( @reservation.finish_day-@reservation.start_day) * @reservation.people * @reservation.room.price
     end
     if @reservation.save
       flash[:notice] = "予約を完了しました"
