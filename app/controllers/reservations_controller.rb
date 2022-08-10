@@ -7,13 +7,18 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
-    @reservation.total_price = ( @reservation.finish_day-@reservation.start_day) * @reservation.people * @reservation.room.price
-    if @reservation.save!
+    if params[:start_day] == "" || params[:finish_day]== "" || params[:people] == ""
+      @reservation.total_price = ( @reservation.finish_day.to_i-@reservation.start_day.to_i) * @reservation.people.to_i * @reservation.room.price.to_i
+    else
+      @reservation.total_price = 0
+    end
+    if @reservation.save
       flash[:notice] = "予約を完了しました"
       redirect_to reservations_path
     else 
-      render "/rooms/show/#{params[:room_id]}"
+      redirect_to "/rooms/#{@reservation.room_id}"
       flash[:danger] = "予約に失敗しました。"
+      
     end
   end
   
